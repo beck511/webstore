@@ -8,13 +8,13 @@ import com.packt.webstore.domain.repository.ProductRepository;
 
 @Controller
 public class ProductController {
-	
+
 	@Autowired
 	private ProductRepository productService;
 
 	@RequestMapping("/products")
 	public String list(Model model) {
-	  model.addAttribute("products", productService.getAllProducts());
-	  return "products";
+		model.addAttribute("products", productService.getAllProducts());
+		return "products";
 	}
 }

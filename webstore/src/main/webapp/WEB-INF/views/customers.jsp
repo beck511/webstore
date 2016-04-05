@@ -5,13 +5,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <link rel="stylesheet"
     href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-    <title>Products</title>
+    <title>Customers</title>
   </head>
   <body>
     <section>
       <div class="jumbotron">
         <div class="container">
-          <h1>Products</h1>
+          <h1>Customers</h1>
           <p>All the customers in our store</p>
         </div>
       </div>
@@ -19,13 +19,14 @@
 
     <section class="container">
       <div class="row">
-        <c:forEach items="${customer}" var="customer">
+        <c:forEach items="${customers}" var="customerVariable">
           <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
             <div class="thumbnail">
               <div class="caption">
-                <h3>${customer.firstName}</h3>
-                <p>${customer.secondName}</p>
-                <p>$${customer.address}</p>
+                <h3>${customer.customerId}</h3>
+                <p>${customer.firstName}</p>
+                <p>${customer.lastName}</p>
+                <p>${customer.address}</p>
                </div>
             </div>
           </div>

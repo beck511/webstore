@@ -1,20 +1,22 @@
 package com.packt.webstore.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.packt.webstore.domain.Customer;
-import com.packt.webstore.service.*;
-import com.packt.webstore.service.impl.CustomerServiceImpl;
-
+import com.packt.webstore.domain.repository.CustomerRepository;
+@Controller
 public class CustomerController {
-	@Controller
-	public class HomeController {
+	
+	
+		@Autowired
+		private CustomerRepository CustomerService;
 
-	  @RequestMapping("/webstore/customers")
-	  public void list(Model model) {
-		  Customer
-	  }
+	  @RequestMapping("/customers")
+	  public String list(Model model) {
+		  model.addAttribute("customers", CustomerService.getAllCustomers());
+		  return "customers";
+		  }
 	}
-}
+
