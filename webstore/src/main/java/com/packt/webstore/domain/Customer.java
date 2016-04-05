@@ -2,25 +2,25 @@ package com.packt.webstore.domain;
 
 public class Customer {
 
-	private String customerId;
+	private int customerId;
 	private String firstName;
 	private String lastName;
 	private String address;
 	private long noOfOrdersMade;
 
-	public String getProductId() {
+	public int getCustomerId() {
 		return customerId;
 	}
 
-	public void setProductId(String productId) {
-		this.customerId = productId;
+	public void setCustomerId(int i) {
+		this.customerId = i;
 	}
 
-	public String getName() {
+	public String getFirstName() {
 		return firstName;
 	}
 
-	public void setName(String name) {
+	public void setFirstName(String name) {
 		this.firstName = name;
 	}
 
