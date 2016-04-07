@@ -10,6 +10,7 @@ import java.util.Set;
 import org.springframework.stereotype.Repository;
 import com.packt.webstore.domain.Product;
 import com.packt.webstore.domain.repository.ProductRepository;
+import com.packt.webstore.exception.ProductNotFoundException;
 
 @Repository
 public class InMemoryProductRepository implements ProductRepository{
@@ -45,20 +46,20 @@ public class InMemoryProductRepository implements ProductRepository{
     return listOfProducts;
   }
   public Product getProductById(String productId) {
-	    Product productById = null;
-	    
-	    for(Product product : listOfProducts) {
-	      if(product!=null && product.getProductId()!=null && product.getProductId().equals(productId)){
-	        productById = product;
-	        break;
-	      }
+	  Product productById = null;
+	  
+	  for(Product product : listOfProducts) {
+	    if(product!=null && product.getProductId()!=null &&product.getProductId().equals(productId)){
+	      productById = product;
+	      break;
 	    }
-	    
-	    if(productById == null){
-	      throw new IllegalArgumentException("No products found with the product id: "+ productId);
-	    }
-	    
-	    return productById;
+	  }
+	  
+	  if(productById == null){
+	    throw new ProductNotFoundException("No products found withthe product id: "+ productId);
+	  }
+	  
+	  return productById;
 	}
   public List<Product> getProductsByCategory(String category) {
 	  List<Product> productsByCategory = new ArrayList<Product>();

@@ -2,10 +2,29 @@ package com.packt.webstore.domain;
 
 import java.math.BigDecimal;
 
-public class Product {
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.springframework.web.multipart.MultipartFile;
+@XmlRootElement
+public class Product {
+	@JsonIgnore
+	private MultipartFile pdf;
+	@JsonIgnore
+	private MultipartFile  productImage;
   private String productId;
-  public String getProductId() {
+  
+  @XmlTransient
+  public MultipartFile getProductImage() {
+	return productImage;
+}
+
+public void setProductImage(MultipartFile productImage) {
+	this.productImage = productImage;
+}
+
+public String getProductId() {
 	return productId;
 }
 
@@ -136,5 +155,13 @@ public BigDecimal getUnitPrice() {
 
 public void setUnitPrice(BigDecimal unitPrice) {
 	this.unitPrice = unitPrice;
+}
+@XmlTransient
+public MultipartFile getPdf() {
+	return pdf;
+}
+
+public void setPdf(MultipartFile pdf) {
+	this.pdf = pdf;
 }
 }
